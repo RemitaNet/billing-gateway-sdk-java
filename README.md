@@ -399,20 +399,20 @@ You may need to enquire that status of biller payments your customers have made 
 |columnLength |Represents the maximum length of the field. Useful for validation.|
 |columnName |Represents the name or label of the field. This value is displayed in the element’s label or placeholder.|
 |columnType |Represents the field character type. Useful for validation|
-    |      |  A – accepts alphabets only|
-    |      |AN – accepts alphanumeric only|
-    |      |N – accepts number only|
-    |      |D – accepts date only|
-    |      |DD – single-select item list (no price/amount)|
-    |      |SL – multi-select item list (no price/amount)|
-    |      |SP – multi-select item list with price/amount|
-    |      |ALL - accepts all text types| 
+|           |A – accepts alphabets only|
+|           |AN – accepts alphanumeric only|
+|           |N – accepts number only|
+|           |D – accepts date only|
+|           |DD – single-select item list (no price/amount)|
+|           |SL – multi-select item list (no price/amount)|
+|           |SP – multi-select item list with price/amount|
+|           |ALL - accepts all text types| 
 |customFieldDropDown |This represents a list of values or items and is ONLY specific to columnTypes DD, SL and SP above|
 |id |Represents the identifier of the field|
-|required |Y – This flag means the custom field is required/mandatory. Useful for validation|
-    |      |N – This flag means the custom field is optional|
-|type |py – Payment RRR|
-    |      | so – Standing Order / DD- Direct Debit|
+|required   |Y – This flag means the custom field is required/mandatory. Useful for validation|
+|           |N – This flag means the custom field is optional|
+|type       |py – Payment RRR|
+|           | so – Standing Order / DD- Direct Debit|
 
 For all other support needs, see www.remita.net/developers.
 
