@@ -8,13 +8,13 @@ The process involves your customers selecting a biller to pay via your platform.
 
 ## PREREQUISITES
 - Prior to using the SDK, you need to set up a profile on www.remita.net. Each  method call will require you to pass the Public key/Secret key. Note that these values have to be set in the header for any request. The SDK uses DEMO keys by default.
-                >>Your DEMO public and secret keys are located at the Billing page at your profile.
-                >>After you login, click ‘Setup Billing’ at your dashboard 
-                >> click ‘Proceed’ on the ‘Yes’ option for the integration question that comes up to display the Public/Secret key.
+            1. Your DEMO public and secret keys are located at the Billing page at your profile.
+            2. After you login, click ‘Setup Billing’ at your dashboard 
+            3. Click ‘Proceed’ on the ‘Yes’ option for the integration question that comes up to display the Public/Secret key.
 - To get your Production keys:
-                >>Click on the top-right button **Request to go-live**
-                >>Send an email to solutionsdelivery@systemspecs.com.ng, for UAT and go-live request.
-                >>After successful UAT, your production keys can be assessed on the Billing page.
+                        1. Click on the top-right button **Request to go-live**
+                       2. Send an email to solutionsdelivery@systemspecs.com.ng, for UAT and go-live request.
+                       3. After successful UAT, your production keys can be assessed on the Billing page.
 - Java 1.8 or later
 - IntelliJ, Eclipse.
 
