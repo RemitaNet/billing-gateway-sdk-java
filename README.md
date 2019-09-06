@@ -20,21 +20,22 @@ The process involves your customers selecting a biller to pay via your platform.
 
 ## MAVEN DEPENDENCY
 To install the remita-billing-sdk-java from central repository, add dependency to your application pom.xml as below.
-
+```java
 <dependency>
 			<artifactId>remita-billing-sdk-java</artifactId>
 			<groupId>com.systemspecs.paymentinfra</groupId>
 			<version>1.0-SNAPSHOT</version>
-		</dependency>
+</dependency>
+```
 ## CREDENTIALS
 Before calling any of the Biller API methods, the SDK needs to be initialized with the Credentials object, see below:
 ### Credentials attributes
-|Field  | Type    | Required   | Description   |   
-| ---   | ------  | -----------| -------- |   
-| publicKey| String | Yes| Located at the Billing page of your Remita profile on www.remita.net.
-| secretKey | String | Yes| Located at the Billing page of your Remita profile on www.remita.net.
-| environment | String | Yes| credentials.setEnvironment("DEMO") for Demo environment, While credentials.setEnvironment("LIVE") for Production environment.
-| transactionId | String | Yes| The value that is specified to identify a transaction from a third-party application accessing the billPayment notification method.
+|Field       | Type    | Required   | Description   |   
+| ---        | ------  | -----------| -------- |   
+| publicKey  | String  | Yes        | Located at the Billing page of your Remita profile on www.remita.net.
+| secretKey  | String  | Yes        | Located at the Billing page of your Remita profile on www.remita.net.
+|environment| String  | Yes        | credentials.setEnvironment("DEMO") for Demo environment, While credentials.setEnvironment("LIVE") for Production environment.
+|transactionId | String | Yes| The value that is specified to identify a transaction from a third-party application accessing the billPayment notification method.
 | readTimeOut | String | Yes| The timeout on waiting to read data.
 | connectionTimeOut | String | Yes| The timeout in making the initial connection.
 
