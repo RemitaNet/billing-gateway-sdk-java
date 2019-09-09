@@ -8,7 +8,7 @@ The process involves your customers selecting a biller to pay via your platform.
 
 ## PREREQUISITES
 - Prior to using the SDK, you need to set up a profile on www.remita.net. Each  method call will require you to pass the Public key/Secret key. Note that these values have to be set in the header for any request. The SDK uses DEMO keys by default.
-            1. Your DEMO public and secret keys are located at the Billing page at your profile.
+            1. Your DEMO public and secret keys are located at the Billing page on your profile.
             2. After you login, click ‘Setup Billing’ at your dashboard 
             3. Click ‘Proceed’ on the ‘Yes’ option for the integration question that comes up to display the Public/Secret key.
 - To get your Production keys:
@@ -19,7 +19,7 @@ The process involves your customers selecting a biller to pay via your platform.
 - IntelliJ, Eclipse.
 
 ## MAVEN DEPENDENCY
-To install the remita-billing-sdk-java from central repository, add dependency to your application pom.xml as below.
+To install the remita-billing-sdk-java from central repository, add the dependency to your application pom.xml as stated below.
 ```java
 <dependency>
 			<artifactId>remita-billing-sdk-java</artifactId>
@@ -73,9 +73,16 @@ Before calling any of the Biller API methods, the SDK needs to be initialized wi
 This returns a list of the billers, merchants and MDAs available on Remita.
 
 ```java
-Credentials credentials = new Credentials();
-remitaBilingGateway = new RemitaBilingGatewayService(credentials);
-GetBillerResponse getBillerResponse = remitaBilingGateway.getBillers();
+ public String getbillers() throws Exception {
+        Credentials credentials = new Credentials();
+        credentials.setEnvironment("DEMO");
+        credentials.setReadTimeOut(10000);
+        credentials.setConnectionTimeOut(5000);
+        credentials.setPublicKey("MDcwfDQwODE2OTg2fDI3MzY4NTc5MThkY2E0MDY5ZWFlN2JlOWRiNmUzNzMzMjc5NDdjYmMyZTM1NjAwM2I1N2NjMDgzMTdlYjIxMWMyNDgxYTc0Zjk4MGI4NzdhMDUwMzA1ZjgzNDlmNzU5NTRlZTVmOThiYjFmMTM4MTZjZjI2NWRhZDdmNjBjOTMz");
+        remitaBilingGateway = new RemitaBilingGatewayService(credentials);
+        return gson.toJson(remitaBilingGateway.getBillers());
+
+    }
 ```
 ### GetBillersResponse attributes
 | Name  | Type    | 
@@ -96,9 +103,14 @@ GetBillerResponse getBillerResponse = remitaBilingGateway.getBillers();
 ### 2. GetServiceTypes(string billerId)
 This returns a list of the products and services associated with specified billers on Remita.
 ```java
-Credentials credentials = new Credentials();
-remitaBilingGateway = new RemitaBilingGatewayService(credentials);
-GetServiceResponse getServiceResponse = remitaBilingGateway.getService("QATEST");
+  public String getServices() throws Exception {
+        Credentials credentials = new Credentials();
+        credentials.setPublicKey("MDcwfDQwODE2OTg2fDI3MzY4NTc5MThkY2E0MDY5ZWFlN2JlOWRiNmUzNzMzMjc5NDdjYmMyZTM1NjAwM2I1N2NjMDgzMTdlYjIxMWMyNDgxYTc0Zjk4MGI4NzdhMDUwMzA1ZjgzNDlmNzU5NTRlZTVmOThiYjFmMTM4MTZjZjI2NWRhZDdmNjBjOTMz");
+        remitaBilingGateway = new RemitaBilingGatewayService(credentials);
+       // GetServiceResponse getServiceResponse = remitaBilingGateway.getService(billerId);
+        //System.out.println("++++ RESPONSE DATA: " + getServiceResponse.getResponseData());
+        return gson.toJson(remitaBilingGateway.getService(billerId));
+    }
 ```
 ### GetServiceResponse attributes
 | Name  | Type    | 
@@ -117,9 +129,12 @@ GetServiceResponse getServiceResponse = remitaBilingGateway.getService("QATEST")
 ### 3. GetCustomField(string billId)
 Custom fields are additional information specific to a service/product offered for sale by a biller. A service/product may or may not have custom fields defined. This endpoint returns a list of the custom fields associated with a specific product/service offered by a biller on the platform.
 ````java
-Credentials credentials = new Credentials();
-remitaBilingGateway = new RemitaBilingGatewayService(credentials);
-GetCustomFieldResponse getCustomFieldResponse = remitaBilingGateway.getCustomField("25083618");
+ public String getCustomField() throws Exception {
+        Credentials credentials = new Credentials();
+        credentials.setPublicKey("MDcwfDQwODE2OTg2fDI3MzY4NTc5MThkY2E0MDY5ZWFlN2JlOWRiNmUzNzMzMjc5NDdjYmMyZTM1NjAwM2I1N2NjMDgzMTdlYjIxMWMyNDgxYTc0Zjk4MGI4NzdhMDUwMzA1ZjgzNDlmNzU5NTRlZTVmOThiYjFmMTM4MTZjZjI2NWRhZDdmNjBjOTMz");
+        remitaBilingGateway = new RemitaBilingGatewayService(credentials);
+        return gson.toJson(remitaBilingGateway.getCustomField("25083618"));
+    }
 ````
 ### GetCustomFieldResponse attributes
 | Name  | Type    | 
@@ -158,9 +173,12 @@ GetCustomFieldResponse getCustomFieldResponse = remitaBilingGateway.getCustomFie
 If your customer already has a Remita Retrieval Reference (RRR) before logging on to your online platform, he/she can also still process payment to Remita billers. They can supply the RRR, verify the RRR to display payment details associated with it and complete payment. The endpoint below makes the call to verify the RRR.
 
 ```java
-Credentials credentials = new Credentials();
-remitaBilingGateway = new RemitaBilingGatewayService(credentials);
-GetRRRDetailsResponse getRRRDetails  = remitaBilingGateway.getRRRDetails("110007764993");
+public String getRRR() throws Exception {
+        Credentials credentials = new Credentials();
+        credentials.setPublicKey("MDcwfDQwODE2OTg2fDI3MzY4NTc5MThkY2E0MDY5ZWFlN2JlOWRiNmUzNzMzMjc5NDdjYmMyZTM1NjAwM2I1N2NjMDgzMTdlYjIxMWMyNDgxYTc0Zjk4MGI4NzdhMDUwMzA1ZjgzNDlmNzU5NTRlZTVmOThiYjFmMTM4MTZjZjI2NWRhZDdmNjBjOTMz");
+        remitaBilingGateway = new RemitaBilingGatewayService(credentials);
+        return gson.toJson(remitaBilingGateway.getRRRDetails("110007764993"));
+    }
 ```
 ### GetRRRDetailsResponse attributes
 | Name  | Type    | 
