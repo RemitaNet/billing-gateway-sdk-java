@@ -1,4 +1,4 @@
-# REMITA BILLER SDK JAVA
+# REMITA BILLER SDK (JAVA)
 This SDK Outlines the Biller methods available on Remita. This document describes the methods offered by the Software Development Kit (SDK) through which SystemSpecs’ partners can integrate much easier and faster to Remita for facilitating customer payments to billers on their platform.
 
 ## OVERVIEW 
