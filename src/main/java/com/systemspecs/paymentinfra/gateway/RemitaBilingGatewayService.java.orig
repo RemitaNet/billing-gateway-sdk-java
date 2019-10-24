@@ -33,10 +33,19 @@ public class RemitaBilingGatewayService {
 
     private Credentials credentials;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 81c8d86bd47383aaa807a42b6a1d86d0aa8f74b6
     Gson gson = new Gson();
 
 
     Random randomNumber = new Random();
+<<<<<<< HEAD
+=======
+>>>>>>> 92096274befd831c24513a046d78e53012cb70bc
+>>>>>>> 81c8d86bd47383aaa807a42b6a1d86d0aa8f74b6
 
     RemitaBilingGatewayService() {
     }

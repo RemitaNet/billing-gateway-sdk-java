@@ -2,13 +2,14 @@ package com.systemspecs.paymentinfra.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class GetRRRDetailsResponseData {
     private String rrr;
-    private Integer amountDue;
+    private BigDecimal amountDue;
     private Double chargeFee;
-    private Integer rrrAmount;
+    private BigDecimal rrrAmount;
     private String payerEmail;
     private String payerName;
     private String payerPhone;
@@ -21,6 +22,16 @@ public class GetRRRDetailsResponseData {
     private String maxNoOfDebits;
     private String startDate;
     private String endDate;
+    private String responseCode;
+
+    public String getResponseCode() {
+        return responseCode;
+    }
+
+    public void setResponseCode(String responseCode) {
+        this.responseCode = responseCode;
+    }
+
     private List<Object> extraData = null;
     private List<Object> customFields = null;
 
@@ -32,11 +43,11 @@ public class GetRRRDetailsResponseData {
         this.rrr = rrr;
     }
 
-    public Integer getAmountDue() {
+    public BigDecimal getAmountDue() {
         return amountDue;
     }
 
-    public void setAmountDue(Integer amountDue) {
+    public void setAmountDue(BigDecimal amountDue) {
         this.amountDue = amountDue;
     }
 
@@ -48,11 +59,11 @@ public class GetRRRDetailsResponseData {
         this.chargeFee = chargeFee;
     }
 
-    public Integer getRrrAmount() {
+    public BigDecimal getRrrAmount() {
         return rrrAmount;
     }
 
-    public void setRrrAmount(Integer rrrAmount) {
+    public void setRrrAmount(BigDecimal rrrAmount) {
         this.rrrAmount = rrrAmount;
     }
 
