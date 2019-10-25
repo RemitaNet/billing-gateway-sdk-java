@@ -10,6 +10,7 @@ import com.systemspecs.paymentinfra.request.BillRequest;
 import com.systemspecs.paymentinfra.request.ValidateRequest;
 import com.systemspecs.paymentinfra.response.*;
 import com.systemspecs.paymentinfra.response.notification.BillNotificationResponse;
+import com.systemspecs.paymentinfra.response.validate.GetServiceResponseList;
 import com.systemspecs.paymentinfra.response.validate.ValidateResponse;
 import com.systemspecs.paymentinfra.response.generate.GenerateResponse;
 import org.springframework.http.*;
@@ -81,6 +82,7 @@ public class RemitaBilingGatewayService {
 
 
     public GetServiceResponse getService(String billerId) {
+        GetServiceResponseList getServiceResponseList = new GetServiceResponseList();
         GetServiceResponse getServiceResponse = new GetServiceResponse();
         APiResponseCode rCode = null;
         if (credentials.getPublicKey() == null) {
@@ -93,7 +95,10 @@ public class RemitaBilingGatewayService {
                 ResponseEntity<String> responseEntity = restTemplate.exchange(
                         String.format("%s%s%s", ApplicationUrl.productionUrlBase, billerId, ApplicationUrl.getServiceUrl), HttpMethod.GET, requestEntity,
                         String.class);
-                getServiceResponse = gson.fromJson(responseEntity.getBody(), GetServiceResponse.class);
+                getServiceResponseList = gson.fromJson(responseEntity.getBody(), GetServiceResponseList.class);
+                getServiceResponse.setResponseCode(getServiceResponseList.getResponseCode());
+                getServiceResponse.setResponseMsg(getServiceResponseList.getResponseMsg());
+                getServiceResponse.setResponseData(getServiceResponseList.getResponseData().get(0));
             } catch (RestClientException e) {
                 e.printStackTrace();
             } catch (JsonSyntaxException e) {
@@ -104,7 +109,10 @@ public class RemitaBilingGatewayService {
                 ResponseEntity<String> responseEntity = restTemplate.exchange(
                         String.format("%s%s%s", ApplicationUrl.demoUrlbase, billerId, ApplicationUrl.getServiceUrl), HttpMethod.GET, requestEntity,
                         String.class);
-                getServiceResponse = gson.fromJson(responseEntity.getBody(), GetServiceResponse.class);
+            getServiceResponseList = gson.fromJson(responseEntity.getBody(), GetServiceResponseList.class);
+            getServiceResponse.setResponseCode(getServiceResponseList.getResponseCode());
+            getServiceResponse.setResponseMsg(getServiceResponseList.getResponseMsg());
+            getServiceResponse.setResponseData(getServiceResponseList.getResponseData().get(0));
 
         }
         return getServiceResponse;
