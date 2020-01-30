@@ -320,6 +320,7 @@ The feedback to this request will contain amountDue which is the computed total 
         validateRequest.setPayerEmail("euniceswit@gmail.com");
         validateRequest.setPayerName("Eunice Olukitibi");
         validateRequest.setPayerPhone("080339887160");
+        validateRequest.setDescription("Payment for School Fees");
         GenerateResponse generateResponse = remitaBilingGateway.generateRRR(validateRequest);
        GenerateResponse generateResponse = remitaBilingGateway.generate(validateRequest)
 ````
