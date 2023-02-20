@@ -1,6 +1,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/ng.com.systemspecs/remita-billing-gateway.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22ng.com.systemspecs%22%20AND%20a:%22remita-billing-gateway%22)
 
 # REMITA BILLER SDK (JAVA)
+
 This SDK outlines the Biller methods available on Remita. This document describes the methods offered by the Software Development Kit (SDK) through which SystemSpecs’ partners can integrate much easier and faster to Remita for facilitating customer payments to billers on their platform.
 
 # Overview
