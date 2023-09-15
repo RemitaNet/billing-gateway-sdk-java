@@ -1,62 +1,77 @@
-[![Maven Central](https://img.shields.io/maven-central/v/ng.com.systemspecs/remita-billing-gateway.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22ng.com.systemspecs%22%20AND%20a:%22remita-billing-gateway%22)
-
 # REMITA BILLER SDK (JAVA)
+
+---
+- [Overview](#Overview)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Features](Features)
+- [Contributing](#Contributing)
+- [License](License)
+
+---
+
+## Overview
 
 This SDK outlines the Biller methods available on Remita. This document describes the methods offered by the Software Development Kit (SDK) through which SystemSpecs’ partners can integrate much easier and faster to Remita for facilitating customer payments to billers on their platform.
 
-# Overview
 Integrating to Remita for Biller payments SDK enables your customers make payments to billers on Remita through your platform. This provides you with the capability to offer your customers access to the vast array of billers and merchants, including schools, churches, service providers and the Federal Government ministries, departments and agencies (MDAs) available on Remita to purchase and subscribe to their various products and services.
+
+[![Maven Central](https://img.shields.io/maven-central/v/ng.com.systemspecs/remita-billing-gateway.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22ng.com.systemspecs%22%20AND%20a:%22remita-billing-gateway%22)
 
 The process involves your customers selecting a biller to pay via your platform. They will supply payment details and confirm the details so you can debit their account with AmountDue to credit a designated Funds Holding Account. Your customers will be emailed Remita receipts (which are FGN MDA-recognized for TSA-bound payments) for each transaction.
 
-# Dependencies
-## Apache Maven
+### Dependencies
+#### Apache Maven
     <dependency>
         <groupId>ng.com.systemspecs</groupId>
         <artifactId>remita-billing-gateway</artifactId>
         <version>1.0.0</version>
     </dependency>
-## Gradle Groovy DSL
+
+#### Gradle Groovy DSL
     implementation 'ng.com.systemspecs:remita-billing-gateway:1.0.0'
 
-## Gradle Kotlin DSL
+#### Gradle Kotlin DSL
     implementation("ng.com.systemspecs:remita-billing-gateway:1.0.0")
 
-## Scala SBT
+#### Scala SBT
     libraryDependencies += "ng.com.systemspecs" % "remita-billing-gateway" % "1.0.0"
 
-## Apache Ivy
+#### Apache Ivy
     <dependency org="ng.com.systemspecs" name="remita-billing-gateway" rev="1.0.0" />
 
-## Groovy Grape
+#### Groovy Grape
     @Grapes(@Grab(group='ng.com.systemspecs', module='remita-billing-gateway', version='1.0.0'))
 
-## Leiningen
+#### Leiningen
     [ng.com.systemspecs/remita-billing-gateway "1.0.0"]
 
-## Apache Buildr
+#### Apache Buildr
     'ng.com.systemspecs:remita-billing-gateway:jar:1.0.0'
 
-## Jar Download
+#### Jar Download
  To download Jar  [CLICK](https://search.maven.org/remotecontent?filepath=ng/com/systemspecs/remita-billing-gateway/1.0.0/remita-billing-gateway-1.0.0.jar) 
+
+ ---
  
-## Prerequisites
+## Installation
 - Prior to using the SDK, you need to set up a profile on www.remita.net. Each  method call will require you to pass the Public key/Secret key. The SDK uses EnvironmentType.DEMO by default.
             1. Your DEMO public and secret keys are located at the Billing page on your profile.
             2. After you login, click ‘Setup Billing’ at your dashboard 
             3. Click ‘Proceed’ on the ‘Yes’ option for the integration question that comes up to display the Public/Secret key.
+
 - To get your Production keys:
-                        1. Click on the top-right button **Request to go-live**
-                       2. Send an email to solutionsdelivery@systemspecs.com.ng, for UAT and go-live request.
-                       3. After successful UAT, your production keys can be assessed on the Billing page.
+  			1. Click on the top-right button **Request to go-live**
+                        2. Send an email to solutionsdelivery@systemspecs.com.ng, for UAT and go-live request.
+                        3. After successful UAT, your production keys can be assessed on the Billing page.
 *  Java 8 or later
 *  STS , IntelliJ , Eclipse
 *  Maven 4 and later
 
-## Using the SDK 
+### Using the SDK 
 *  Add any of the above dependency in your build tool file. E.g For MAVEN, add the dependency in apache maven section to your pom.xml
 
-## Configuration
+### Configuration
 Before calling any of the Biller API methods, the SDK needs to be initialized with the Credentials object, see below:
 #### Credentials attributes
 |Field       | Type    | Required   | Description   |   
@@ -82,8 +97,9 @@ Below is a code sample on how to Initialize and set the credentials.
         RemitaBillingGatewayService gatewayService = new RemitaBillingGatewayServiceImpl(credentials);
         gatewayService.getbillers();
  ```
+---
 
-## METHODS
+## Usage
 1. [GetBillers()](#getbillers)- Gets the list of billers on Remita platform.
 2. [GetServiceTypes(string billerId)](#getservicetypes)- Gets the list of service  Types based on selected billerId.
 3. [GetCustomField(string billId)](#getcustomfield) - Gets the list of Custom Fields based on selected serviceTypeId.
@@ -104,7 +120,7 @@ This returns a list of the billers, merchants and MDAs available on Remita.
         return response;
     }
    ```
-##### GetBillersResponse attributes
+#### GetBillersResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -112,7 +128,7 @@ This returns a list of the billers, merchants and MDAs available on Remita.
 | appVersionCode | String | 
 | responseData  | List<GetBillerResponseData>  |
 
-##### GetBillersResponseData attributes
+#### GetBillersResponseData attributes
 | Name  | Type    |
 | ---   | ------  | 
 | id | String |
@@ -129,7 +145,8 @@ This returns a list of the products and services associated with specified bille
         return response;
     }
 ```
-### GetServiceResponse attributes
+
+#### GetServiceResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -137,7 +154,7 @@ This returns a list of the products and services associated with specified bille
 | appVersionCode | String | 
 | responseData  | List <GetServiceResponseData> 
 
-### GetServiceResponseData attributes
+#### GetServiceResponseData attributes
 | Name  | Type    |
 | ---   | ------  | 
 | id | String |
@@ -152,7 +169,8 @@ Custom fields are additional information specific to a service/product offered f
         return gatewayService.getCustomField("25083618");
     }
 ````
-### GetCustomFieldResponse attributes
+
+#### GetCustomFieldResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -164,7 +182,7 @@ Custom fields are additional information specific to a service/product offered f
 | fixedAmount | Double|
 | currency | String|
 
-## GetCustomFieldResponseData attributes
+#### GetCustomFieldResponseData attributes
 | Name  | Type    |
 | ---   | ------  | 
 | id | String |
@@ -174,7 +192,7 @@ Custom fields are additional information specific to a service/product offered f
 | required| Boolean|
 |customFieldDropDown | List<GetCustomFieldResponseDropDown> |
 
-## GetCustomFieldResponseDropDown attributes
+#### GetCustomFieldResponseDropDown attributes
 | Name  | Type    |
 | ---   | ------  | 
 | id | String |
@@ -194,7 +212,8 @@ public GetRRRDetailsResponse getRRR() {
         return gatewayService.getRRRDetails("110007764993");
     }
 ```
-### GetRRRDetailsResponse attributes
+
+#### GetRRRDetailsResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -202,7 +221,7 @@ public GetRRRDetailsResponse getRRR() {
 | appVersionCode | String | 
 | responseData  | List<GetRRRDetailsResponseData> |
 
-## GetRRRDetailsResponseData attributes
+#### GetRRRDetailsResponseData attributes
 | Name  | Type    | 
 | ---   | ------  | 
 |rrr |  String|
@@ -266,7 +285,8 @@ The feedback from a validation call would indicate if all necessary field requir
         return  validateResponse;
     }
 ````
-### ValidateResponse attributes
+
+#### ValidateResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -274,7 +294,7 @@ The feedback from a validation call would indicate if all necessary field requir
 | appVersionCode | String | 
 | responseData  | List<ResponseDatum> |
 
-### ResponseDatum attributes
+#### ResponseDatum attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | customFields | List<CustomField> |
@@ -287,13 +307,13 @@ The feedback from a validation call would indicate if all necessary field requir
 | amountDue  | BigDecimal |
 | status | String |
 
-### CustomField attributes
+#### CustomField attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | values | List<Value> |
 | id | String |  
 
-### Value attributes
+#### Value attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | value | String |
@@ -302,8 +322,7 @@ The feedback from a validation call would indicate if all necessary field requir
 
 ### 6. GenerateRRR(ValidateRequest validateRequest)
 In order to complete the transaction through the Remita Payment Gateway, a Remita Retrieval Reference or RRR is required. This is what uniquely identifies and embodies the payment details of a transaction on the platform ecosystem. Calling this endpoint will generate an RRR for the biller payment.
-##### Note
-The feedback to this request will contain amountDue which is the computed total amount of the service. This is the amount you are expected to debit the payer with regardless of the amount supplied by payer or the amount specified for the service.
+**Note:** The feedback to this request will contain amountDue which is the computed total amount of the service. This is the amount you are expected to debit the payer with regardless of the amount supplied by payer or the amount specified for the service.
 
 ````java
      public GenerateResponse generateRRR(){
@@ -343,7 +362,8 @@ The feedback to this request will contain amountDue which is the computed total 
     }
 
 ````
-### GenerateResponse attributes
+
+#### GenerateResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -351,7 +371,7 @@ The feedback to this request will contain amountDue which is the computed total 
 | appVersionCode | String | 
 | responseData  | List<ResponseData> |
 
-### ResponseData attributes
+#### ResponseData attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | amountDue | BigDecimal |
@@ -377,7 +397,8 @@ After you have debit the customer with the RRR amount (amountDue) to process the
         return  billNotificationResponse;
     }
 ````
-### BillNotificationResponse attributes
+
+#### BillNotificationResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -387,7 +408,7 @@ After you have debit the customer with the RRR amount (amountDue) to process the
 | iResponseMessage | String | 
 | responseData  | List<ResponseData> |
 
-### ResponseData attributes
+#### ResponseData attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | rrr | String |
@@ -408,7 +429,8 @@ You may need to enquire that status of biller payments your customers have made 
         return gatewayService.getTransactionStatus("1540915827487");
     }
 ````
-### GetTransactionStatusResponse attributes
+
+#### GetTransactionStatusResponse attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | responseCode | String |
@@ -418,7 +440,7 @@ You may need to enquire that status of biller payments your customers have made 
 | iResponseMessage | String | 
 | responseData  | List<GetTransactionStatusData> |
 
-### GetTransactionStatusData attributes
+#### GetTransactionStatusData attributes
 | Name  | Type    | 
 | ---   | ------  | 
 | rrr | String |
@@ -430,7 +452,7 @@ You may need to enquire that status of biller payments your customers have made 
 | amountDebitted | BigDecimal | 
 | extendedData | List<Object> | 
 
-### Description of the Custom Field Attributes
+#### Description of the Custom Field Attributes
 | ATTRIBUTE  | DESCRIPTION    | 
 | ---   | ------  |
 |columnLength |Represents the maximum length of the field. Useful for validation.|
@@ -450,5 +472,28 @@ You may need to enquire that status of biller payments your customers have made 
 |           |N – This flag means the custom field is optional|
 |type       |py – Payment RRR|
 |           | so – Standing Order / DD- Direct Debit|
-## Support
-- For all other support needs, support@remita.net
+
+### Useful links
+Join our Slack Developer/Support channel on [slack.](http://bit.ly/RemitaDevSlack)
+    
+### Support
+For all other support needs, support@remita.net
+
+---
+
+## Contributing
+To contribute to this repo, follow these guidelines for creating issues, proposing new features, and submitting pull requests:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b "feature-name"`
+3. Make your changes and commit: `git commit -m "added some new features"`
+4. Push your changes: `git push origin feature-name`
+5. Submit a Pull Request (PR).
+
+Thank you!
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
